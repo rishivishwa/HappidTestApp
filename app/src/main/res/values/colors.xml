@@ -4,4 +4,8 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#FFFFFFFF</color>
     <color name="blue_app">#5046BB</color>
+    <color name="background_tint">#051B1A1A</color>
+    <color name="grey">#A8808080</color>
+    <color name="grey800">#808080</color>
+    <color name="pink">#ECABAB</color>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.happidtestapp.fragments
 
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import androidx.fragment.app.Fragment
@@ -8,8 +9,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
-import com.example.happidtestapp.DialogForRenameAudio
+import com.example.happidtestapp.DialogForOtp
 import com.example.happidtestapp.R
+import com.example.happidtestapp.Utils
 import com.example.happidtestapp.databinding.FragmentLogInBinding
 
 
@@ -24,7 +26,15 @@ class LogInFragment : Fragment() {
         onClick()
         return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        var textOfPrivacy = "By Creating PassCode you Agree With Our Term & Condition and Privacy Policy "
+        var spnable = Utils.changeTextColorInSentence(textOfPrivacy,"Term & Condition"," Privacy Policy",Color.RED)
+        binding.privacyText.text = spnable
+    }
     private fun onClick(){
+
         binding.backIcon.setOnClickListener {
             activity?.onBackPressed()
         }
@@ -49,8 +59,8 @@ class LogInFragment : Fragment() {
         }
     }
     private fun openDialog(otp: String, fullNumber: String) {
-        var renameDialog: DialogForRenameAudio? = null
-        renameDialog = DialogForRenameAudio(
+        var renameDialog: DialogForOtp? = null
+        renameDialog = DialogForOtp(
             context,otp
         )
         Handler().postDelayed({

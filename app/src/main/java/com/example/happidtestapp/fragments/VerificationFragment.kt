@@ -1,5 +1,6 @@
 package com.example.happidtestapp.fragments
 
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -11,6 +12,7 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.happidtestapp.R
+import com.example.happidtestapp.Utils
 import com.example.happidtestapp.databinding.FragmentVarificationBinding
 
 
@@ -32,6 +34,11 @@ class VerificationFragment : Fragment() {
         var number =arguments?.getString("number")
         binding.otps.text = number
         setupOtpInput(otp)
+        var textResend ="Don't Receive OTP? Resend"
+        var spnable = Utils.changeTextColorInSentence(textResend,"Resend","",
+            Color.RED)
+        binding.textResend.text = spnable
+
     }
     private fun onClick(){
         binding.backIcon.setOnClickListener {
