@@ -3,16 +3,17 @@ package com.example.happidtestapp.fragments
 import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.happidtestapp.DialogForOtp
 import com.example.happidtestapp.R
 import com.example.happidtestapp.Utils
 import com.example.happidtestapp.databinding.FragmentLogInBinding
+import com.hbb20.CountryCodePicker
 
 
 class LogInFragment : Fragment() {
@@ -26,11 +27,11 @@ class LogInFragment : Fragment() {
         onClick()
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var textOfPrivacy = "By Creating PassCode you Agree With Our Term & Condition and Privacy Policy "
-        var spnable = Utils.changeTextColorInSentence(textOfPrivacy,"Term & Condition"," Privacy Policy",Color.RED)
+
+        val textOfPrivacy = "By Creating PassCode you Agree With Our \n Term & Condition and Privacy Policy "
+        val spnable = Utils.changeTextColorInSentence(textOfPrivacy,"Term & Condition"," Privacy Policy",Color.RED)
         binding.privacyText.text = spnable
     }
     private fun onClick(){
@@ -69,7 +70,7 @@ class LogInFragment : Fragment() {
             bundle.putString("OTP", otp)
             bundle.putString("number", fullNumber)
             findNavController().navigate(R.id.action_logInFragment_to_verificationFragment, bundle)
-        }, 5000)
+        }, 3000)
         renameDialog.show()
 
     }

@@ -58,6 +58,7 @@
                 app:ccp_showNameCode="false"
                 android:gravity="center"
                 app:ccp_showArrow="false"
+                app:ccp_contentColor="@color/grey"
                 android:background="@drawable/light_background"
                  />
 

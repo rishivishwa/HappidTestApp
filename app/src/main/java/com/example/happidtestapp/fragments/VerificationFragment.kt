@@ -30,12 +30,12 @@ class VerificationFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var otp =arguments?.getString("OTP")
-        var number =arguments?.getString("number")
+        val otp =arguments?.getString("OTP")
+        val number =arguments?.getString("number")
         binding.otps.text = number
         setupOtpInput(otp)
-        var textResend ="Don't Receive OTP? Resend"
-        var spnable = Utils.changeTextColorInSentence(textResend,"Resend","",
+        val textResend ="Don't Receive OTP? Resend"
+        val spnable = Utils.changeTextColorInSentence(textResend,"Resend","",
             Color.RED)
         binding.textResend.text = spnable
 
@@ -56,15 +56,12 @@ class VerificationFragment : Fragment() {
         binding.verifyOtp.setOnClickListener {
             val otpAll = StringBuilder()
             for (field in otpFields) {
-                otpAll.append(field?.text.toString())
+                otpAll.append(field.text.toString())
             }
             if (otpAll.toString() == otp) {
                 findNavController().navigate(R.id.action_verificationFragment_to_profileFragment)
             } else {
-                Toast.makeText(context, "error", Toast.LENGTH_SHORT).show()
-
-                // Handle the case where OTP is less than 4 digits
-                // Show an error message or take appropriate action
+                Toast.makeText(context, "OTP is wrong", Toast.LENGTH_SHORT).show()
             }
         }
     }

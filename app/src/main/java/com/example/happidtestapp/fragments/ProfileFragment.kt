@@ -20,6 +20,7 @@ private const val REQUEST_CAMERA_PERMISSION = 1001
 private const val REQUEST_IMAGE_CAPTURE = 1002
 class ProfileFragment : Fragment() {
     private lateinit var binding : FragmentProfileBinding
+    private var permissionNotAllow = true
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -31,10 +32,23 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(requireActivity(), arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE), REQUEST_CAMERA_PERMISSION)
+        if (permissionNotAllow) {
+            if (ContextCompat.checkSelfPermission(
+                    requireContext(),
+                    Manifest.permission.CAMERA
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
+                ActivityCompat.requestPermissions(
+                    requireActivity(),
+                    arrayOf(Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                    REQUEST_CAMERA_PERMISSION
+                )
+            } else {
+                permissionNotAllow = false
+            }
         }
     }
+
     private fun onClick(){
         binding.backIcon.setOnClickListener {
             activity?.onBackPressed()
@@ -51,7 +65,7 @@ class ProfileFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
             val imageBitmap = data?.extras?.get("data") as Bitmap
-            binding.cameraImage.setImageBitmap(imageBitmap)
+            binding.setCameraImage.setImageBitmap(imageBitmap)
       }
     }
 
