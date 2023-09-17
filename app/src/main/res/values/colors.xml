@@ -8,4 +8,5 @@
     <color name="grey">#A8808080</color>
     <color name="grey800">#808080</color>
     <color name="pink">#ECABAB</color>
+    <color name="pink_dark">#FF6D6D</color>
 </resources>

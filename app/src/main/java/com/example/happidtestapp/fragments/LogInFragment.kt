@@ -31,7 +31,9 @@ class LogInFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val textOfPrivacy = "By Creating PassCode you Agree With Our \n Term & Condition and Privacy Policy "
-        val spnable = Utils.changeTextColorInSentence(textOfPrivacy,"Term & Condition"," Privacy Policy",Color.RED)
+        val spnable = Utils.changeTextColorInSentence(textOfPrivacy,"Term & Condition"," Privacy Policy",
+            context?.getColor(R.color.pink_dark)!!
+        )
         binding.privacyText.text = spnable
     }
     private fun onClick(){

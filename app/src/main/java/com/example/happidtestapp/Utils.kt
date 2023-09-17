@@ -6,12 +6,10 @@ import android.text.style.ForegroundColorSpan
 
 object Utils {
 
-
     fun changeTextColorInSentence(sentence: String, targetText: String,targetTwo: String, color: Int): SpannableString {
         val spannable = SpannableString(sentence)
         val startIndex = sentence.indexOf(targetText)
         val startIndexTwo = sentence.indexOf(targetTwo)
-
         if (startIndex != -1) {
             val endIndex = startIndex + targetText.length
             val colorSpan = ForegroundColorSpan(color)
@@ -22,7 +20,6 @@ object Utils {
             val colorSpan = ForegroundColorSpan(color)
             spannable.setSpan(colorSpan, startIndexTwo, endIndex1, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
         }
-
         return spannable
     }
 }

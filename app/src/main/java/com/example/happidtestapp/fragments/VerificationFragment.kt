@@ -36,7 +36,7 @@ class VerificationFragment : Fragment() {
         setupOtpInput(otp)
         val textResend ="Don't Receive OTP? Resend"
         val spnable = Utils.changeTextColorInSentence(textResend,"Resend","",
-            Color.RED)
+            context?.getColor(R.color.pink_dark)!!)
         binding.textResend.text = spnable
 
     }
